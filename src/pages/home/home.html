@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Home</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="home-page">
+  <ion-searchbar (ionInput)="search($event)" debounce="500"></ion-searchbar>
+<ion-list>
+  <!--<ion-list-header>SERVICE LIST</ion-list-header>-->
+  <ion-item>
+    <ion-label>วันที่รับบริการ</ion-label>
+    <ion-datetime 
+    displayFormat="DDDD MMM D, YYYY"
+    pickerFormat="D MMMM YYYY"
+    monthNames="มกราคม,กุมภาพันธ์,มีนาคม,เมษายน,พฤษภาคม,มิถุนายน,กรกฎาคม, สิงหาคม, กันยายน,ตุลาคม,พฤศจิกายน,ธันวาคม"
+    monthShortNames="ม.ค,ก.พ,มี.ค,เม.ย,พ.ค,มิ.ย,ก.ค,ส.ค,ก.ย,ต.ค,พ.ย,ธ.ค"
+    dayNames="อาทิตย์,จันทร์,อังคาร,พุธ,พฤหัสบดี,ศุกร์,เสาร์"
+    dayShortNames="อา,จ,อ,พ,พฤ,ศ,ส"
+    [(ngModel)]="dateServe"></ion-datetime>
+  </ion-item>
+  <button ion-item (click)="showMenu()">
+    <ion-avatar item-left>
+      <img src="./assets/img/man.png">
+    </ion-avatar>
+    <h2>Cher</h2>
+    <p>Ugh. As if.</p>
+  </button>
+</ion-list>
+</ion-content>
