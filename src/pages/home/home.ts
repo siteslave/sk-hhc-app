@@ -7,6 +7,8 @@ import { EmrDetailPage } from '../emr-detail/emr-detail';
 import { IHttpResult, IService } from '../../models';
 import { Service } from '../../providers/service';
 
+import * as moment from 'moment';
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -14,7 +16,7 @@ import { Service } from '../../providers/service';
 export class HomePage {
 
   services: Array<IService>;
-  vstdate: string;
+  vstdate: any;
 
   constructor(
     public navCtrl: NavController,
@@ -23,7 +25,7 @@ export class HomePage {
     private serviceProvider: Service,
     private loadingCtrl: LoadingController
   ) {
-
+    this.vstdate = moment().format('YYYY-MM-DD');
   }
 
   getServices() {
@@ -46,7 +48,7 @@ export class HomePage {
   }
 
   ionViewWillEnter() {
-
+    this.getServices();
   }
 
   showMenu() {

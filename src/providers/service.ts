@@ -26,4 +26,38 @@ export class Service {
     });
   }
 
+  getComList() {
+    return new Promise((resolve, reject) => {
+      let headers = new Headers({ 'Content-Type': 'application/json' });
+      let options = new RequestOptions({ headers: headers });
+      // let body = { vstdate: vstdate };
+
+      this.http.post(`${this.url}/comlist`, options)
+      // this.http.get(this.url + '/users')
+        .map(res => res.json())
+        .subscribe(data => {
+          resolve(data)
+        }, err => {
+          reject(err)
+        });
+    });
+  }
+
+  getDoctorList() {
+    return new Promise((resolve, reject) => {
+      let headers = new Headers({ 'Content-Type': 'application/json' });
+      let options = new RequestOptions({ headers: headers });
+      // let body = { vstdate: vstdate };
+
+      this.http.post(`${this.url}/doctorlist`, options)
+      // this.http.get(this.url + '/users')
+        .map(res => res.json())
+        .subscribe(data => {
+          resolve(data)
+        }, err => {
+          reject(err)
+        });
+    });
+  }
+
 }
