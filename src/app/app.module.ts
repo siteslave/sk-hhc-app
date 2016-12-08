@@ -9,6 +9,9 @@ import { SettingPage } from '../pages/setting/setting';
 import { EntryPage } from '../pages/entry/entry';
 import { TabsPage } from '../pages/tabs/tabs';
 
+import { Service } from '../providers/service';
+import { Emr } from '../providers/emr';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -35,6 +38,7 @@ import { TabsPage } from '../pages/tabs/tabs';
     EntryPage
   ],
   providers: [
+    Service, Emr,
     { provide: 'API_URL', useValue: 'http://localhost:3000' },
     { provide: ErrorHandler, useClass: IonicErrorHandler }
   ]

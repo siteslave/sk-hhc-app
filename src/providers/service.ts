@@ -15,7 +15,7 @@ export class Service {
       let options = new RequestOptions({ headers: headers });
       let body = { vstdate: vstdate };
 
-      this.http.post(`${this.url}/users`, body, options)
+      this.http.post(`${this.url}/services`, body, options)
       // this.http.get(this.url + '/users')
         .map(res => res.json())
         .subscribe(data => {

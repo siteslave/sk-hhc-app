@@ -17,14 +17,18 @@
     monthShortNames="ม.ค,ก.พ,มี.ค,เม.ย,พ.ค,มิ.ย,ก.ค,ส.ค,ก.ย,ต.ค,พ.ย,ธ.ค"
     dayNames="อาทิตย์,จันทร์,อังคาร,พุธ,พฤหัสบดี,ศุกร์,เสาร์"
     dayShortNames="อา,จ,อ,พ,พฤ,ศ,ส"
-    [(ngModel)]="dateServe"></ion-datetime>
+    [(ngModel)]="vstdate" (ionChange)="getServices()"></ion-datetime>
   </ion-item>
-  <button ion-item (click)="showMenu()">
+  <button ion-item (click)="showMenu()" *ngFor="let service of services">
     <ion-avatar item-left>
-      <img src="./assets/img/man.png">
+      <img src="./assets/img/man.png" *ngIf="service.sex == '1'">
+      <img src="./assets/img/woman.png" *ngIf="service.sex == '2'">
     </ion-avatar>
-    <h2>Cher</h2>
-    <p>Ugh. As if.</p>
+    <h2>{{ service.ptname }}</h2>
+    <p>HN: {{ service.hn }}</p>
+    <ion-note item-right>
+      {{ service.vsttime }}
+    </ion-note>
   </button>
 </ion-list>
 </ion-content>

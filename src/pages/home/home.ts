@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 
-import { NavController, Platform, ActionSheetController } from 'ionic-angular';
+import { NavController, Platform, ActionSheetController, LoadingController } from 'ionic-angular';
 import { EntryPage } from '../entry/entry';
 import { EmrDetailPage } from '../emr-detail/emr-detail';
 
 import { IHttpResult, IService } from '../../models';
+import { Service } from '../../providers/service';
 
 @Component({
   selector: 'page-home',
@@ -13,13 +14,38 @@ import { IHttpResult, IService } from '../../models';
 export class HomePage {
 
   services: Array<IService>;
-  dateServe: string;
+  vstdate: string;
 
   constructor(
     public navCtrl: NavController,
     private actionSheetCtrl: ActionSheetController,
-    public platform: Platform
+    public platform: Platform,
+    private serviceProvider: Service,
+    private loadingCtrl: LoadingController
   ) {
+
+  }
+
+  getServices() {
+    let loading = this.loadingCtrl.create({
+      content: 'Please wait...'
+    });
+
+    loading.present();
+    
+    this.serviceProvider.getServices(this.vstdate)
+      .then((data: IHttpResult) => {
+        if (data.ok) {
+          this.services = data.rows;
+        }
+        loading.dismiss();
+      }, (err) => { 
+        loading.dismiss();
+        console.error(err);
+      });
+  }
+
+  ionViewWillEnter() {
 
   }
 
