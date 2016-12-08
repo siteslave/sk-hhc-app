@@ -32,3 +32,9 @@ $RECYCLE.BIN/
 .DS_Store
 Thumbs.db
 UserInterfaceState.xcuserstate
+
+.editorconfig
+config.xml
+ionic.config.json
+tsconfig.json
+tslint.json
