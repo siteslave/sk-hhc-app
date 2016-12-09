@@ -8,7 +8,7 @@ import { EmrDetailPage } from '../pages/emr-detail/emr-detail';
 import { SettingPage } from '../pages/setting/setting';
 import { EntryPage } from '../pages/entry/entry';
 import { TabsPage } from '../pages/tabs/tabs';
-
+import { LoginPage } from '../pages/login/login';
 import { Service } from '../providers/service';
 import { Emr } from '../providers/emr';
 
@@ -21,7 +21,8 @@ import { Emr } from '../providers/emr';
     EmrPage,
     EmrDetailPage,
     SettingPage,
-    EntryPage
+    EntryPage,
+    LoginPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -35,7 +36,8 @@ import { Emr } from '../providers/emr';
     EmrPage,
     EmrDetailPage,
     SettingPage,
-    EntryPage
+    EntryPage,
+    LoginPage
   ],
   providers: [
     Service, Emr,

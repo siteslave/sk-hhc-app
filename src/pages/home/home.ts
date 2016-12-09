@@ -17,6 +17,7 @@ export class HomePage {
 
   services: Array<IService>;
   vstdate: any;
+  token: string;
 
   constructor(
     public navCtrl: NavController,
@@ -26,6 +27,7 @@ export class HomePage {
     private loadingCtrl: LoadingController
   ) {
     this.vstdate = moment().format('YYYY-MM-DD');
+    this.token = localStorage.getItem('token');
   }
 
   getServices() {
@@ -35,7 +37,7 @@ export class HomePage {
 
     loading.present();
     
-    this.serviceProvider.getServices(this.vstdate)
+    this.serviceProvider.getServices(this.vstdate, this.token)
       .then((data: IHttpResult) => {
         if (data.ok) {
           this.services = data.rows;

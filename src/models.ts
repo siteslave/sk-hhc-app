@@ -2,6 +2,9 @@ export interface IHttpResult {
   ok: boolean;
   msg?: any;
   rows?: any;
+  fullname?: string;
+  token?: string;
+  error?: string;
 }
 
 export interface IService {
