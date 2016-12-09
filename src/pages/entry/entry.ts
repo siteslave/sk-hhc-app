@@ -44,6 +44,13 @@ export class EntryPage {
           this.doctorlists = data.rows;
         }
        }, (err) => { });
+    
+    this.serviceProvider.getImage(this.vn)
+      .then((data: IHttpResult) => {
+        if (data.ok) {
+          this.base64Image = 'data:image/jpeg;base64,' + data.rows;
+        }
+       }, (err) => { });
   }
 
   takePicture() {
@@ -76,6 +83,16 @@ export class EntryPage {
     });
   }
   
+  removePicture() {
+    this.serviceProvider.removeImage(this.vn)
+      .then(() => {
+        this.base64Image = null;
+        this.imageData = null;
+      }, (err) => {
+        console.error(err);
+      });
+  }
+
   save() {
     this.serviceProvider.save(this.vn, this.imageData)
       .then((data: IHttpResult) => {
