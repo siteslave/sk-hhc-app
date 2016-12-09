@@ -39,7 +39,7 @@ import { Emr } from '../providers/emr';
   ],
   providers: [
     Service, Emr,
-    { provide: 'API_URL', useValue: 'http://192.168.3.181:3000' },
+    { provide: 'API_URL', useValue: 'http://192.168.1.120:3000' },
     { provide: ErrorHandler, useClass: IonicErrorHandler }
   ]
 })

@@ -60,4 +60,20 @@ export class Service {
     });
   }
 
+  save(vn: string, image: string) {
+    return new Promise((resolve, reject) => {
+      let headers = new Headers({ 'Content-Type': 'application/json' });
+      let options = new RequestOptions({ headers: headers });
+      let body = { vn: vn, image: image };
+
+      this.http.post(`${this.url}/save`, body, options)
+        .map(res => res.json())
+        .subscribe(data => {
+          resolve(data)
+        }, err => {
+          reject(err)
+        });
+    });
+  }
+
 }

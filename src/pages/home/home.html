@@ -20,7 +20,7 @@
     dayShortNames="อา,จ,อ,พ,พฤ,ศ,ส"
     [(ngModel)]="vstdate" (ionChange)="getServices()"></ion-datetime>
   </ion-item>
-  <button ion-item (click)="showMenu()" *ngFor="let service of services">
+  <button ion-item (click)="showMenu(service)" *ngFor="let service of services">
     <ion-avatar item-left>
       <img src="./assets/img/man.png" *ngIf="service.sex == '1'">
       <img src="./assets/img/woman.png" *ngIf="service.sex == '2'">

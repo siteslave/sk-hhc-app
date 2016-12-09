@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { Service } from '../../providers/service';
 import { Camera, CameraOptions } from 'ionic-native';
 
-import { IHttpResult } from '../../models';
+import { IHttpResult, IService } from '../../models';
 
 @Component({
   selector: 'page-entry',
@@ -16,11 +16,19 @@ export class EntryPage {
   provider: string;
   imageData: string;
   base64Image: string;
+  ptname: string;
+  hn: string;
+  vn: string;
 
   constructor(
     public navCtrl: NavController,
-    private serviceProvider: Service
-  ) { }
+    private serviceProvider: Service,
+    private navParams: NavParams
+  ) { 
+    this.ptname = this.navParams.get('ptname');
+    this.vn = this.navParams.get('vn');
+    this.hn = this.navParams.get('hn');
+  }
 
   ionViewWillEnter() {
     this.serviceProvider.getComList()
@@ -69,7 +77,14 @@ export class EntryPage {
   }
   
   save() {
-
+    this.serviceProvider.save(this.vn, this.imageData)
+      .then((data: IHttpResult) => {
+        if (data.ok) {
+          alert('Ok')
+        }
+      }, (err) => {
+        console.error(err);
+      });
   } 
   
   remove() {

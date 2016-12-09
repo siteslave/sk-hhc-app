@@ -51,7 +51,7 @@ export class HomePage {
     this.getServices();
   }
 
-  showMenu() {
+  showMenu(service: IService) {
    let actionSheet = this.actionSheetCtrl.create({
      title: 'Modify your album',
      buttons: [
@@ -59,7 +59,7 @@ export class HomePage {
          text: 'บันทึกข้อมูล',
          icon: !this.platform.is('ios') ? 'create' : null,
          handler: () => {
-           this.navCtrl.push(EntryPage, { hn: null, vn: null });
+           this.navCtrl.push(EntryPage, service);
          }
        },
        {
