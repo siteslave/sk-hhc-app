@@ -38,3 +38,4 @@ config.xml
 ionic.config.json
 tsconfig.json
 tslint.json
+package.json
