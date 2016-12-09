@@ -13,7 +13,7 @@
     <ion-item>
       <ion-icon name="notifications" color="primary" item-left></ion-icon>
       <ion-label>รับข้อมูลข่าวสาร</ion-label>
-      <ion-toggle checked="true"></ion-toggle>
+      <ion-toggle checked="true" [(ngModel)]="accept" (click)="changeToggle()"></ion-toggle>
     </ion-item>
   </ion-list>
 </ion-content>

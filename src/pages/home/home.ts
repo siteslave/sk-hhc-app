@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { NavController, Platform, ActionSheetController, LoadingController } from 'ionic-angular';
 import { EntryPage } from '../entry/entry';
 import { EmrDetailPage } from '../emr-detail/emr-detail';
+import { LoginPage } from '../login/login';
 
 import { IHttpResult, IService } from '../../models';
 import { Service } from '../../providers/service';
@@ -28,6 +29,12 @@ export class HomePage {
   ) {
     this.vstdate = moment().format('YYYY-MM-DD');
     this.token = localStorage.getItem('token');
+  }
+
+  logout() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('username');
+    this.navCtrl.setRoot(LoginPage);
   }
 
   getServices() {

@@ -76,6 +76,54 @@ export class Service {
     });
   }
 
+  saveDeviceToken(username: string, deviceToken: string, token: string) {
+    return new Promise((resolve, reject) => {
+      let headers = new Headers({ 'Content-Type': 'application/json' });
+      let options = new RequestOptions({ headers: headers });
+      let body = { username: username, deviceToken: deviceToken, token: token };
+
+      this.http.post(`${this.url}/register-device`, body, options)
+        .map(res => res.json())
+        .subscribe(data => {
+          resolve(data)
+        }, err => {
+          reject(err)
+        });
+    });
+  }
+
+  getUsers(token: string) {
+    return new Promise((resolve, reject) => {
+      let headers = new Headers({ 'Content-Type': 'application/json' });
+      let options = new RequestOptions({ headers: headers });
+      let body = { token: token };
+
+      this.http.post(`${this.url}/users-list`, body, options)
+        .map(res => res.json())
+        .subscribe(data => {
+          resolve(data)
+        }, err => {
+          reject(err)
+        });
+    });
+  }
+
+  sendAlert(username: string, message: string, token: string) {
+    return new Promise((resolve, reject) => {
+      let headers = new Headers({ 'Content-Type': 'application/json' });
+      let options = new RequestOptions({ headers: headers });
+      let body = { username: username, msg: message, token: token };
+
+      this.http.post(`${this.url}/send-alert`, body, options)
+        .map(res => res.json())
+        .subscribe(data => {
+          resolve(data)
+        }, err => {
+          reject(err)
+        });
+    });
+  }
+
   getImage(vn: string, token: string) {
     return new Promise((resolve, reject) => {
       let headers = new Headers({ 'Content-Type': 'application/json' });

@@ -32,6 +32,8 @@ export class LoginPage {
         if (data.ok) {
           let token = data.token;
           localStorage.setItem('token', token);
+          localStorage.setItem('username', this.username);
+          
           let alert = this.alertCtrl.create({
             title: 'Welcome!',
             subTitle: 'สวัสดี, ' + data.fullname,

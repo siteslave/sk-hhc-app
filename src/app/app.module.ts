@@ -11,6 +11,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { LoginPage } from '../pages/login/login';
 import { Service } from '../providers/service';
 import { Emr } from '../providers/emr';
+import { AlertPage } from '../pages/alert/alert';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { Emr } from '../providers/emr';
     EmrDetailPage,
     SettingPage,
     EntryPage,
-    LoginPage
+    LoginPage,
+    AlertPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -37,7 +39,8 @@ import { Emr } from '../providers/emr';
     EmrDetailPage,
     SettingPage,
     EntryPage,
-    LoginPage
+    LoginPage,
+    AlertPage
   ],
   providers: [
     Service, Emr,
